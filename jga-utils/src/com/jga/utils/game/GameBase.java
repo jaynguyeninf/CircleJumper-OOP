@@ -6,14 +6,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Logger;
+import com.jga.utils.ads.AdController;
 
 /**
  * Created by Jay Nguyen on 4/13/2017.
  */
 
 public abstract class GameBase extends Game {
+
+    private final AdController adController;
+
     private AssetManager assetManager;
     private SpriteBatch batch;
+
+    public GameBase(AdController adController) {
+        this.adController = adController;
+    }
 
     @Override
     public void create() {
@@ -42,5 +50,9 @@ public abstract class GameBase extends Game {
 
     public SpriteBatch getBatch() {
         return batch;
+    }
+
+    public AdController getAdController() {
+        return adController;
     }
 }

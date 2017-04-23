@@ -18,6 +18,7 @@ public class Planet {
 
     public Planet() {
         bounds = new Circle(x, y, GameConfig.PLANET_RADIUS);
+        setSize(GameConfig.PLANET_DIMENSION, GameConfig.PLANET_DIMENSION);
     }
 
     public void setPosition(float x, float y) {
@@ -56,8 +57,10 @@ public class Planet {
         updateBounds();
     }
 
-    private void updateBounds(){
-        bounds.setPosition(x,y);
+    private void updateBounds() {
+        float halfWidth = getWidth() / 2;
+        float halfHeight = getHeight() / 2;
+        bounds.setPosition(x + halfWidth, y + halfHeight);
     }
 
     public float getX() {

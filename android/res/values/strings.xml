@@ -3,4 +3,6 @@
 
     <string name="app_name">CircleJumper</string>
 
+    <item name="adViewId" type="id" />
+
 </resources>
