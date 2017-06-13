@@ -61,6 +61,7 @@ public class GameRenderer implements Disposable {
     private GameOverOverlay gameOverOverlay;
 
 
+
     public GameRenderer(GameController gameController, AssetManager assetManager, SpriteBatch batch) {
         this.gameController = gameController;
         this.assetManager = assetManager;
@@ -302,8 +303,8 @@ public class GameRenderer implements Disposable {
             glyphLayout.setText(font, floatingScore.getScoreString());
             font.setColor(floatingScore.getColor());
             font.draw(batch, glyphLayout,
-                    floatingScore.getX()  - glyphLayout.width / 2,
-                    floatingScore.getY()  - glyphLayout.height / 2);
+                    floatingScore.getX() - glyphLayout.width / 2,
+                    floatingScore.getY() - glyphLayout.height / 2);
         }
 
         font.setColor(oldFontColor);

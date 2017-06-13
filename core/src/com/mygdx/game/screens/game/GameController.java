@@ -95,6 +95,7 @@ public class GameController {
         }
 
         animationTime += delta;
+        log.debug("animationTime = " + animationTime);
 
         GameManager.INSTANCE.updateDisplayScores(delta); //update scores
 

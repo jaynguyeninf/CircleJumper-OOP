@@ -33,8 +33,8 @@ public class GameOverOverlay extends Table {
 
         //score table
         Table scoreTable = new Table(getSkin());
+        scoreTable.setDebug(true);
         scoreTable.defaults().pad(10);
-        scoreTable.setBackground(RegionNames.PANEL);
 
         scoreTable.add("Score:").row();
         scoreLabel = new Label("", getSkin());
