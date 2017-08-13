@@ -77,10 +77,11 @@ public class GameRenderer implements Disposable {
 
         //get assets
         font = assetManager.get(AssetDescriptors.FONT);
+        Skin skin = assetManager.get(AssetDescriptors.SKIN);
+
         TextureAtlas gameplayAtlas = assetManager.get(AssetDescriptors.GAME_PLAY);
         backgroundRegion = gameplayAtlas.findRegion(RegionNames.BACKGROUND);
         planetRegion = gameplayAtlas.findRegion(RegionNames.PLANET);
-        Skin skin = assetManager.get(AssetDescriptors.SKIN);
 
         //animations
         obstacleAnimation = new Animation<TextureRegion>(0.1f,
@@ -96,7 +97,6 @@ public class GameRenderer implements Disposable {
         hudStage = new Stage(hudViewport, batch);
         menuOverlay = new MenuOverlay(skin, gameController.getCallback()); //table
         gameOverOverlay = new GameOverOverlay(skin, gameController.getCallback()); //table
-
 
         hudStage.addActor(menuOverlay);
         hudStage.addActor(gameOverOverlay);
@@ -136,7 +136,7 @@ public class GameRenderer implements Disposable {
 
         //obstacle
         Array<Obstacle> obstacles = gameController.getObstacles();
-        TextureRegion obstacleRegion = obstacleAnimation.getKeyFrame(gameController.getAnimationTime());
+        TextureRegion obstacleRegion = obstacleAnimation.getKeyFrame(gameController.getStateTime());
         for (Obstacle obstacle : obstacles) {
             batch.draw(obstacleRegion,
                     obstacle.getX(), obstacle.getY(),
@@ -153,7 +153,7 @@ public class GameRenderer implements Disposable {
 
         //coin
         Array<Coin> coins = gameController.getCoins();
-        TextureRegion coinRegion = coinAnimation.getKeyFrame(gameController.getAnimationTime());
+        TextureRegion coinRegion = coinAnimation.getKeyFrame(gameController.getStateTime());
         for (Coin coin : coins) {
             batch.draw(coinRegion,
                     coin.getX(), coin.getY(),
@@ -165,7 +165,7 @@ public class GameRenderer implements Disposable {
 
         //monster
         Monster monster = gameController.getMonster();
-        TextureRegion monsterRegion = monsterAnimation.getKeyFrame(gameController.getAnimationTime());
+        TextureRegion monsterRegion = monsterAnimation.getKeyFrame(gameController.getStateTime());
         batch.draw(monsterRegion,
                 monster.getX(), monster.getY(),
                 0, 0,

@@ -5,6 +5,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.utils.Logger;
 import com.jga.utils.game.GameBase;
 import com.mygdx.game.asset_helpers.AssetDescriptors;
 import com.mygdx.game.common.SoundListener;
@@ -14,6 +15,8 @@ import com.mygdx.game.common.SoundListener;
  */
 
 public class GameScreen extends ScreenAdapter {
+
+    private static final Logger log = new Logger(GameScreen.class.getSimpleName(), Logger.DEBUG);
 
     private final GameBase game;
     private final AssetManager assetManager;
@@ -64,6 +67,8 @@ public class GameScreen extends ScreenAdapter {
 
         gameController.update(delta);
         gameRenderer.render(delta);
+
+        log.debug("render calls = " + game.getBatch().renderCalls);
     }
 
     @Override

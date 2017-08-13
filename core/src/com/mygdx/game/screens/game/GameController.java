@@ -42,7 +42,7 @@ public class GameController {
     private float coinTimer;
     private float obstacleTimer;
     private float startWaitTimer = GameConfig.START_WAIT_TIME;
-    private float animationTime;
+    private float stateTime;
 
     private GameState gameState = GameState.MENU;
     private OverlayCallback callback;
@@ -94,8 +94,8 @@ public class GameController {
             return;
         }
 
-        animationTime += delta;
-        log.debug("animationTime = " + animationTime);
+        stateTime += delta;
+        log.debug("stateTime = " + stateTime);
 
         GameManager.INSTANCE.updateDisplayScores(delta); //update scores
 
@@ -283,7 +283,7 @@ public class GameController {
         GameManager.INSTANCE.updateHighScore(); //persist scores before reset();
         GameManager.INSTANCE.reset();
         startWaitTimer = GameConfig.START_WAIT_TIME;
-        animationTime = 0;
+        stateTime = 0;
         gameState = GameState.READY;
     }
 
@@ -314,8 +314,8 @@ public class GameController {
         return startWaitTimer;
     }
 
-    public float getAnimationTime() {
-        return animationTime;
+    public float getStateTime() {
+        return stateTime;
     }
 
     public GameState getGameState() {

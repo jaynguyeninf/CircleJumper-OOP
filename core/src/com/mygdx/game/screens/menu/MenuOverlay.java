@@ -67,6 +67,7 @@ public class MenuOverlay extends Table {
 
         add(logoTable).top().grow().row();
         add(buttonTable).center().grow();
+
         center();
         setFillParent(true);
         pack();
